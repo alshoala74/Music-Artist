@@ -1,10 +1,10 @@
 # Music Artist  README
 
 # Index Page
-![Alt Text](index.png)
+![Alt Text](index.png,)
 
 # Artist Details Page
-![Alt Text](Artist Details.png)
+![Alt Text](ArtistDetails.png)
 
 
 This is a Go program that retrieves data from an API and displays it in a web application. The application fetches data about artists from the "https://groupietrackers.herokuapp.com/api/artists" API endpoint and performs additional API calls to fetch location, date, and relation information for each artist.
