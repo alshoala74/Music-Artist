@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/stylejob.css" rel="stylesheet">
+    <!-- <script src="./index.js"></script> -->
+    <style>
+        body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #24252A;
+    /* background-color: #24252A; */
+    /* scroll-behavior: smooth; */
+}
+
+.container{
+    display: grid;
+    max-width: 90%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 50px;
+    min-height: 350px;
+    grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+    gap: 10px;
+    row-gap: 10px;
+    row-gap: 40px;
+    
+}
+
+
+.item{
+    justify-content: center;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 15px;
+    position: relative;
+    border-radius: 50%;
+    border: #D12149 solid 4px;
+    position: relative;
+    transition: top 0.7s ease;
+}
+
+.item img{
+    
+    border-radius: 50%;
+    width: 300px;
+}
+
+.item:hover{
+    top: -20px;
+}
+
+.item:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    border-radius: 50%;
+  }
+  
+  .item:hover::after {
+    content: attr(data-title);
+    color: #D12149;
+    font-weight: 700;
+    font-size: 2.5vw ;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    padding: 7px 0px;
+    position: relative;
+    align-items: center;
+    background-color: white;
+    color: white;
+    border-bottom: 2px solid #fff;
+    border-radius: 20px;
+    max-width: 100%;
+    margin: auto;
+    width: 90%;
+  }
+  
+  .brand-title {
+    margin: 1rem;
+    border-right:#D12149 4px solid ;
+    padding-right: 20px;
+  }
+  
+  .brand-title h1 {
+    display: inline-block;
+    overflow: hidden;
+    color: #D12149;
+    font-size: 20px;
+  }
+  
+  .navbar-links {
+    text-align: center;
+    height: 100%;
+  }
+  
+  .navbar-links ul {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 0;
+  }
+  
+  .navbar-links li {
+    list-style: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 20px;
+  }
+  
+  .navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: #d12149;
+    padding: 1rem;
+    font-size: 20px;
+  }
+
+
+
+
+.toggle-button {
+    position: absolute;
+    top: 1.20rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background-color:#D12149;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* The role of media query is that, it says if certain condition meet run the code of inside it, and if not then don't */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container{
+        grid-template-columns: repeat(1,minmax(150px,1fr));
+    }
+
+    /* Now the hamburgur menu will be visible */
+    .toggle-button {
+        display: flex;
+    }
+
+    /* Now the links will disapper and */
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .brand-title img{
+        margin-right: 0px;
+     }
+}
+    </style>
+</head>
+<body>
+
+    <!-- <section>
+         <header class="navs">
+          <img src="img/header-logo.svg"  alt="img">
+          <nav>
+            <ul class="navlink">
+              <li><a href="#home">Home</a></li>
+              <li><a href="particepent.html">Particepent</a></li>
+              <li><a href="jobbord.html">Job Bords</a></li>
+              
+            </ul>
+          </nav>
+          <img class="pfpimgb pfpimg hvr-grow"src="img/pfpf.jpg" alt="pfp">
+          
+          
+    
+        </header> 
+    
+        
+    </section> -->
+    <section>
+        <nav class="navbar">
+           
+            <div class="brand-title">
+                <h1>GROUPE TRACKER</h1>
+            </div>
+    
+          
+            <!-- <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                
+            </a>
+    
+            
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="#home">Home</a></li> 
+                    <li><a href="#about">News</a></li>
+                    <li><a href="#contacts">Sucess Story</a></li>
+                </ul>
+
+                
+            </div> -->
+        </nav>
+    </section>
+
+
+    <section class="container">
+        {{range .}}
+        <a href="/artist?id={{.ID}}" alt="">
+        <div class="item item1" data-title="{{.Name}}">
+              <img src="{{.Image}}" alt="{{.Name}} Image">
+        </div>
+        </a>
+        {{end}}
+    </section>
+
+ 
+</body>
+    <script>
+        window.onload = function(){
+            const toggleButton = document.getElementsByClassName('toggle-button')[0]
+        const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+        
+        toggleButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active')
+        
+            
+        })
+        }
+    </script>
+</html>

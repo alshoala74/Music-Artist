@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Details</title>
+    <style>
+                .navbar {
+            display: flex;
+            padding: 7px 0px;
+            position: relative;
+            align-items: center;
+            background-color: white;
+            color: white;
+            border-bottom: 2px solid #fff;
+            border-radius: 20px;
+            max-width: 100%;
+            margin: auto;
+            width: 90%;
+        }
+        
+        .brand-title {
+            margin: 1rem;
+            border-right:#D12149 4px solid ;
+            padding-right: 20px;
+        }
+        
+        .brand-title h1 {
+            display: inline-block;
+            overflow: hidden;
+            color: #D12149;
+            font-size: 20px;
+        }
+        
+        .navbar-links {
+            text-align: center;
+            height: 100%;
+        }
+        
+        .navbar-links ul {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            padding: 0;
+        }
+        
+        .navbar-links li {
+            list-style: none;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 20px;
+        }
+        
+        .navbar-links li a {
+            display: block;
+            text-decoration: none;
+            color: #d12149;
+            padding: 1rem;
+            font-size: 20px;
+        }
+
+
+
+
+        .toggle-button {
+            position: absolute;
+            top: 1.20rem;
+            right: 1rem;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background-color:#D12149;
+        }
+
+        .toggle-button .bar {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+/* The role of media query is that, it says if certain condition meet run the code of inside it, and if not then don't */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .container{
+                grid-template-columns: repeat(1,minmax(150px,1fr));
+            }
+
+            /* Now the hamburgur menu will be visible */
+            .toggle-button {
+                display: flex;
+            }
+
+            /* Now the links will disapper and */
+            .navbar-links {
+                display: none;
+                width: 100%;
+            }
+
+            .navbar-links ul {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .navbar-links ul li {
+                text-align: center;
+            }
+
+            .navbar-links ul li a {
+                padding: .5rem 1rem;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .brand-title img{
+                margin-right: 0px;
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #24252A;
+        }
+       
+        h2,h1 {
+            text-align: center;
+            margin: auto;
+            justify-content: center;
+            margin-bottom: 30px;
+            color: #ccc;
+            margin-top: 20px;
+        }
+        .artist-card {
+            border: 1px solid #ccc;
+            width: 50%;
+            margin: auto;
+            border-radius: 70px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color:#D12149;
+            border: black 3px solid;
+            border-radius: 20px;
+        }
+        .artist-name {
+            margin-top: 0;
+        }
+        .artist-image {
+            border: black 3px solid;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+            margin-bottom: 50px;
+            max-width: 30vw;
+            max-height: 30vw;
+        }
+        .artist-details p {
+            margin: 10px 0;
+        }
+        strong{
+            color: #ccc;
+        }
+        .return-link {
+            background-color:#D12149;
+            border: black 3px solid;
+            border-radius: 20px;
+            padding: 20px;
+            margin: auto;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        a{
+            text-decoration: none;
+            font-size: 1.2em;
+            color: white;
+        }
+        
+    </style>
+    <link href="/templates/img/icon.png" rel="icon" >
+</head>
+<body>
+    <section>
+        <nav class="navbar">
+           
+            <div class="brand-title">
+                <h1>GROUPE TRACKER</h1>
+            </div>
+    
+          
+            <!-- <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                
+            </a>
+    
+            
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="#home">Home</a></li> 
+                    <li><a href="#about">News</a></li>
+                    <li><a href="#contacts">Sucess Story</a></li>
+                </ul>
+
+                
+            </div> -->
+        </nav>
+    </section>
+
+
+    <h1>Artist Details</h1>
+    {{range .}}
+    <div class="artist-card">
+        <h2 class="artist-name">{{.Name}}</h2>
+        <img class="artist-image" src="{{.Image}}" alt="{{.Name}} Image">
+        <div class="artist-details">
+            <p><strong>Members:</strong> {{range $index, $member := .Members}}{{if $index}}, {{end}}{{.}}{{end}}.</p>
+            <p><strong>Creation Date:</strong> {{.CreationDate}}</p>
+            <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
+            <p><strong>Locations:</strong> {{range $index, $location := .Locations}}{{if $index}}, {{end}}{{.}}{{end}}.</p>
+            <p><strong>Concert Dates:</strong> {{range $index, $date := .ConcertDates}}{{if $index}}, {{end}}{{.}}{{end}}.</p>
+        </div>
+        <div class="artist-relations">
+            <h4><strong>Relations:</strong></h4>
+            <ul>
+                {{range $key, $value := .Relations}}
+                <li><strong>{{$key}}:</strong> {{range $index, $elem := $value}}{{if $index}}, {{end}}{{.}}{{end}}.</li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+    {{end}}
+    <button class="return-link"><a  href="/">Return to Home Page</a></button>
+</body>
+</html>
