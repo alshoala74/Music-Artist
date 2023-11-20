@@ -1,7 +1,7 @@
 # Music Artist  README
 
 # Index Page
-![Alt Text](index.png,)
+![Alt Text](index.png)
 
 # Artist Details Page
 ![Alt Text](ArtistDetails.png)
